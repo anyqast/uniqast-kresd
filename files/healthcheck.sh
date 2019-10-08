@@ -6,8 +6,6 @@ healthcheck_ip=$(cat /tmp/healthcheck-ip 2> /dev/null)
 
 test -z "${healthcheck_ip}" && exit 1
 
-rec_control ping 1> /dev/null 2> /dev/null || exit 1
-
 retval=$(
 	for domain in anyqast-dnstest.com anyqast-dnstest.org; do
 		for test in 'A 0.0.0.0' 'AAAA ::' 'TXT "'"${domain}"'"' 'MX 0 '"${domain}"'.'; do
