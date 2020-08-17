@@ -21,5 +21,8 @@ echo "Listening for healthchecks on ${HEALTHCHECK_LISTEN_IP}"
 
 echo "${HEALTHCHECK_LISTEN_IP}" > /tmp/healthcheck-ip
 
+export NUM_CPUS="$(nproc)"
+export CACHEPATH="${CACHEPATH:-.}"
+
 exec "/usr/bin/supervisord" "-kc/etc/supervisord.conf"
 
